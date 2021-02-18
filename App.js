@@ -27,14 +27,14 @@ const Auth = () => {
         name="RegisterScreen"
         component={RegisterScreen}
         options={{
-          title: 'Register', //Set Header Title
+          title: 'create your account', //Set Header Title
           headerStyle: {
-            backgroundColor: '#307ecc', //Set Header color
+            backgroundColor: '#00334e', //Set Header color
           },
           headerTintColor: '#fff', //Set Header text color
-          headerTitleStyle: {
-            fontWeight: 'bold', //Set Header text style
-          },
+          // headerTitleStyle: {
+          //   fontWeight: 'bold', //Set Header text style
+          // },
         }}
       />
     </Stack.Navigator>
@@ -71,7 +71,7 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Edit your story"
+          name="Edit your blog"
           component={EditScreen}
           options={{ headerShown: true }}
         />

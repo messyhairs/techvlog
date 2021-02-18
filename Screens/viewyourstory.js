@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { View, Text, SafeAreaView, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Axios from 'axios';
 import { Card, ListItem, Button, Icon } from 'react-native-elements';
@@ -30,7 +30,7 @@ export default class Viewstory extends Component {
             // const geturl = 'http://172.26.240.1:8000/api/getuserdetails/';
             // const localurl = 'http://192.168.1.16:8000/api/getuserdetails/';
             // const localurl = 'http://localhost:8000/api/getuserdetails/';
-            const localurl = 'https://tranquil-dusk-36378.herokuapp.com/api/getuserdetails'
+            const localurl = 'https://tranquil-dusk-36378.herokuapp.com/api/getuserdetails/'
             const config = {
                 headers: {
                     'content-type': 'multipart/form-data',
@@ -97,7 +97,7 @@ export default class Viewstory extends Component {
         // }
         this.props.navigation.navigate(
             // 'EditstoryScreenStack',
-            'Edit your story'
+            'Edit your blog'
             // { story: stories },
         );
         // console.log(e.target.value);
@@ -123,11 +123,16 @@ export default class Viewstory extends Component {
                                     <Text style={styles.storycontentbottomview}>{stories.storycontent}</Text>
                                     <Card.Divider />
                                 </View>
-                                <View style={{ flex: 1, flexDirection: 'row' }}>
-                                    <View style={{ width: 50, height: 50 }}>
-                                        <Text value={stories.title} onPress={((e) => this.editformstatus(e, stories))}>Edit</Text>
-                                    </View>
-                                </View>
+                                {/* <View style={{ flex: 1, flexDirection: 'row' }}> */}
+                                {/* <View style={{ width: 50, height: 50 }}> */}
+                                <TouchableOpacity
+                                    style={styles.buttonStyle}
+                                    activeOpacity={0.5} value={stories.title} onPress={((e) => this.editformstatus(e, stories))}>
+                                    <Text style={styles.buttonTextStyle}>Edit your blog</Text>
+                                </TouchableOpacity>
+                                {/* <Text value={stories.title} onPress={((e) => this.editformstatus(e, stories))}>Edit</Text> */}
+                                {/* </View> */}
+                                {/* </View> */}
                             </Card>
                         ))}
                     </View>
@@ -162,5 +167,22 @@ const styles = StyleSheet.create({
     },
     mainBody: {
         paddingBottom: 50
+    },
+    buttonStyle: {
+        backgroundColor: '#f3f4f7',
+        borderWidth: 0,
+        borderColor: '#7DE24E',
+        height: 40,
+        alignItems: 'center',
+        borderRadius: 30,
+        marginLeft: 35,
+        marginRight: 35,
+        marginTop: 20,
+        marginBottom: 20,
+    },
+    buttonTextStyle: {
+        color: '#00205b',
+        paddingVertical: 10,
+        fontSize: 16,
     }
 });

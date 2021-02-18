@@ -95,10 +95,10 @@ export default class EditScreen extends React.Component {
                     if (responseJson.messgae === 'update') {
                         // AsyncStorage.removeItem('currentstory');
                         if (Platform.OS === 'android') {
-                            ToastAndroid.show("your story updated succesfully!", ToastAndroid.SHORT);
+                            ToastAndroid.show("your blog updated succesfully!", ToastAndroid.SHORT);
                         }
                         if (Platform.OS === 'ios') {
-                            AlertIOS.alert('your story updated succesfully');
+                            AlertIOS.alert('your blog updated succesfully');
                             // ToastAndroid.show("your story updated succesfully!", ToastAndroid.SHORT);
                         }
                         AsyncStorage.removeItem('currentstory');
@@ -217,13 +217,14 @@ export default class EditScreen extends React.Component {
                             />
                             <View style={{ flex: 1, flexDirection: 'row', marginRight: 'auto', marginLeft: 'auto' }}>
                                 <View style={{ width: 120, height: 50 }}>
-                                    <Button title="update" onPress={this.updatestories} />
-                                    {/* <Text onPress={this.updatestories}>update</Text> */}
-                                </View>
-                                <View style={{ width: 120, height: 50, marginLeft: 20 }}>
                                     <Button title="Delete" onPress={this.deletestories} />
                                     {/* <Text onPress={this.deletestories}>delete</Text> */}
                                 </View>
+                                <View style={{ width: 120, height: 50, marginLeft: 20 }}>
+                                    <Button title="update" onPress={this.updatestories} />
+                                    {/* <Text onPress={this.updatestories}>update</Text> */}
+                                </View>
+
                             </View>
                         </View>
                     </View>

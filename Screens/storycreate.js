@@ -113,10 +113,10 @@ const Storycreatescreen = (props) => {
                             if (responseJson.message === 'done') {
                                 // setIsRegistraionSuccess(true);
                                 if (Platform.OS === 'android') {
-                                    ToastAndroid.show("your story created succesfully!", ToastAndroid.SHORT);
+                                    ToastAndroid.show("your blog created succesfully!", ToastAndroid.SHORT);
                                 }
                                 if (Platform.OS === 'ios') {
-                                    AlertIOS.alert('your story created succesfully');
+                                    AlertIOS.alert('your blog created succesfully');
                                     // ToastAndroid.show("your story updated succesfully!", ToastAndroid.SHORT);
                                 }
                                 setTimeout(() => {
@@ -125,7 +125,7 @@ const Storycreatescreen = (props) => {
                                     props.navigation.navigate('SplashScreen')
                                 }, 1000);
                                 console.log(
-                                    'Story created Successful'
+                                    'blog created Successful'
                                 );
                             } else {
                                 setErrortext(responseJson.msg);
@@ -275,7 +275,7 @@ const Storycreatescreen = (props) => {
                     style={styles.inputStyle}
                     onChangeText={(title) => settitle(title)}
                     underlineColorAndroid="#f000"
-                    placeholder="Enter Title"
+                    placeholder="Blog Title"
                     placeholderTextColor="#8b9cb5"
                     returnKeyType="next"
                 />
@@ -287,7 +287,7 @@ const Storycreatescreen = (props) => {
                     }
                     returnKeyType="next"
                     // maxLength={120}
-                    placeholder='Content of TechVlog'
+                    placeholder='Content of Blog'
                     placeholderTextColor={'#c7c7c7'}
                     underlineColorAndroid={'transparent'}
                 />
@@ -295,7 +295,7 @@ const Storycreatescreen = (props) => {
                     style={styles.buttonStyle}
                     activeOpacity={0.5}
                     onPress={createstory}>
-                    <Text style={styles.buttonTextStyle}>createstory</Text>
+                    <Text style={styles.buttonTextStyle}>Add Blog</Text>
                 </TouchableOpacity>
                 {/* <Button style={styles.buttonStyle} title="CreateStory" onPress={createstory} /> */}
             </ScrollView>

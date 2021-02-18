@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
-import { View, Text, SafeAreaView, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Axios from 'axios';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
@@ -111,7 +111,14 @@ export default class HomeScreen extends Component {
                                     <Card.Divider />
                                 </View>
                                 <View>
-                                    <Text>posted by <Text style={styles.underline} onPress={((e) => this.profiledetails(e, stories))}>{stories.username}</Text></Text>
+                                    <Text>Posted by <TouchableOpacity
+                                        style={styles.buttonStyle}
+                                        activeOpacity={0.5} onPress={((e) => this.profiledetails(e, stories))}>
+                                        <Text style={styles.buttonTextStyle}>
+                                            {stories.username}
+                                        </Text>
+                                    </TouchableOpacity></Text>
+                                    {/* <Text>posted by <Text style={styles.underline} onPress={((e) => this.profiledetails(e, stories))}>{stories.username}</Text></Text> */}
                                 </View>
                             </Card>
                         ))}
@@ -130,6 +137,26 @@ const styles = StyleSheet.create({
     },
     mainBody: {
         paddingBottom: 50
+    },
+    buttonStyle: {
+        backgroundColor: '#0c2340',
+        borderWidth: 0,
+        borderColor: '#7DE24E',
+        width: 100,
+        // height: 40,
+        alignItems: 'center',
+        borderRadius: 30,
+        marginLeft: 8,
+        // marginRight: 35,
+        // marginTop: 20,
+        // marginBottom: 20,
+        paddingTop: 5,
+        paddingBottom: 5
+    },
+    buttonTextStyle: {
+        color: '#fefefe',
+        // paddingVertical: 10,
+        fontSize: 16,
     },
     activityIndicator: {
         flex: 1,

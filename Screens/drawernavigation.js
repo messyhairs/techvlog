@@ -42,7 +42,7 @@ const homeScreenStack = ({ navigation }) => {
                 name="HomeScreen"
                 component={HomeScreen}
                 options={{
-                    title: 'Home', //Set Header Title
+                    title: 'All Blogs', //Set Header Title
                     headerLeft: () => (
                         <NavigationDrawerHeader navigationProps={navigation} />
                     ),
@@ -50,9 +50,9 @@ const homeScreenStack = ({ navigation }) => {
                         backgroundColor: '#307ecc', //Set Header color
                     },
                     headerTintColor: '#fff', //Set Header text color
-                    headerTitleStyle: {
-                        fontWeight: 'bold', //Set Header text style
-                    },
+                    // headerTitleStyle: {
+                    //     fontWeight: 'bold', //Set Header text style
+                    // },
                 }}
             />
         </Stack.Navigator>
@@ -106,7 +106,7 @@ const storycreateScreenStack = ({ navigation }) => {
                 name="CreateStory"
                 component={Storycreatescreen}
                 options={{
-                    title: 'create your story', //Set Header Title
+                    title: 'create your blog', //Set Header Title
                 }}
             />
         </Stack.Navigator>
@@ -134,7 +134,7 @@ const viewstoryScreenStack = ({ navigation }) => {
                 name="Viewstory"
                 component={Viewstory}
                 options={{
-                    title: 'Your stories', //Set Header Title
+                    title: 'Your blogs', //Set Header Title
                 }}
             />
         </Stack.Navigator>
@@ -156,7 +156,7 @@ const DrawerNavigatorRoutes = (props) => {
             drawerContent={CustomSidebarMenu}>
             <Drawer.Screen
                 name="homeScreenStack"
-                options={{ drawerLabel: 'Home Screen' }}
+                options={{ drawerLabel: 'All Blogs' }}
                 component={homeScreenStack}
             />
             <Drawer.Screen
@@ -166,13 +166,13 @@ const DrawerNavigatorRoutes = (props) => {
             />
             <Drawer.Screen
                 name="CreateStory"
-                options={{ drawerLabel: 'Createstory' }}
+                options={{ drawerLabel: 'Create Blogs' }}
                 component={storycreateScreenStack}
             />
 
             <Drawer.Screen
                 name="viewstoryScreenStack"
-                options={{ drawerLabel: 'Viewstory' }}
+                options={{ drawerLabel: 'Your Blogs' }}
                 component={viewstoryScreenStack}
             />
             {/* <Drawer.Screen

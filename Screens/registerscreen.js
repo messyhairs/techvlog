@@ -234,7 +234,7 @@ const RegisterScreen = (props) => {
         );
     }
     return (
-        <View style={{ flex: 1, backgroundColor: '#eeeeee' }}>
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
             {/* <Loader loading={loading} /> */}
             <ScrollView
                 keyboardShouldPersistTaps="handled"
@@ -376,12 +376,12 @@ const RegisterScreen = (props) => {
                             blurOnSubmit={false}
                         />
                     </View>
-                    {errortext != '' ? (
+                    {/* {errortext != '' ? (
                         <Text style={styles.errorTextStyle}>
                             {errortext}
                         </Text>
-                    ) : null}
-                    <TouchableOpacity
+                    ) : null} */}
+                  <TouchableOpacity
                         style={styles.buttonStyle}
                         activeOpacity={0.5}
                         onPress={handleSubmitButton}>
@@ -400,6 +400,7 @@ const RegisterScreen = (props) => {
                         await schedulePushNotification();
                     }}
                 /> */}
+                  
             </ScrollView>
         </View >
     );
@@ -411,42 +412,55 @@ export default RegisterScreen;
 const styles = StyleSheet.create({
     SectionStyle: {
         flexDirection: 'row',
-        height: 40,
-        marginTop: 20,
-        marginLeft: 35,
-        marginRight: 35,
-        margin: 10,
+        // height: 40,
+        // marginTop: 20,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        // margin: 10,
+        width: '75%',
     },
     hiddenInput: {
         width: 0,
         height: 0,
     },
     buttonStyle: {
-        backgroundColor: '#f6f6f5',
+        backgroundColor: '#16214d',
         borderWidth: 0,
         color: '#003580',
         borderColor: '#7DE24E',
-        height: 40,
+        // height: 40,
         alignItems: 'center',
         borderRadius: 30,
-        marginLeft: 35,
-        marginRight: 35,
-        marginTop: 20,
-        marginBottom: 20,
+        // marginLeft: 35,
+        // marginRight: 35,
+        marginTop: 50,
+        // marginBottom: 20,
+        width: '50%',
+        marginRight: 'auto',
+        marginLeft: 'auto'
     },
     buttonTextStyle: {
-        color: '#003580',
+        color: '#f3f4f7',
         paddingVertical: 10,
         fontSize: 16,
     },
     inputStyle: {
         flex: 1,
-        color: '#444444',
+        color: '#00334e',
         paddingLeft: 15,
         paddingRight: 15,
         borderWidth: 1,
-        borderRadius: 15,
+        borderTopWidth: 0,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        // borderRadius: 30,
         borderColor: '#dadae8',
+        marginTop: 20,
+        paddingTop: 20,
+        paddingBottom: 20,
+        // marginLeft: 'auto',
+        // marginRight: 'auto',
+        // outline: 'none'
     },
     errorTextStyle: {
         color: 'red',
