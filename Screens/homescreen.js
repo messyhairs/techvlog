@@ -111,14 +111,14 @@ export default class HomeScreen extends Component {
                                     <Card.Divider />
                                 </View>
                                 <View>
-                                    <Text>Posted by <TouchableOpacity
+                                    {/* <Text>Posted by <TouchableOpacity
                                         style={styles.buttonStyle}
                                         activeOpacity={0.5} onPress={((e) => this.profiledetails(e, stories))}>
                                         <Text style={styles.buttonTextStyle}>
                                             {stories.username}
                                         </Text>
-                                    </TouchableOpacity></Text>
-                                    {/* <Text>posted by <Text style={styles.underline} onPress={((e) => this.profiledetails(e, stories))}>{stories.username}</Text></Text> */}
+                                    </TouchableOpacity></Text> */}
+                                    <Text style={styles.leftContainer}>posted by <Text style={styles.underline} onPress={((e) => this.profiledetails(e, stories))}>{stories.username}</Text></Text>
                                 </View>
                             </Card>
                         ))}
@@ -148,10 +148,23 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         marginLeft: 8,
         // marginRight: 35,
-        // marginTop: 20,
+        // marginTop: 90,
         // marginBottom: 20,
         paddingTop: 5,
         paddingBottom: 5
+    },
+    leftContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        // backgroundColor: 'green'
+    },
+    rightContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        backgroundColor: 'red',
     },
     buttonTextStyle: {
         color: '#fefefe',

@@ -10,6 +10,7 @@ import {
     TouchableOpacity,
     ScrollView,
     Platform,
+    ToastAndroid,
     Button
 } from 'react-native';
 import * as Notifications from 'expo-notifications';
@@ -189,6 +190,9 @@ const RegisterScreen = (props) => {
                 console.log(responseJson);
                 if (responseJson.message === 'success') {
                     setIsRegistraionSuccess(true);
+                    if(Platform.OS === 'android') {
+                        ToastAndroid.show(responseJson.toast, ToastAndroid.SHORT);
+                    }
                     Notifications.scheduleNotificationAsync({
                         content: {
                             // title: responseJson.message,
@@ -203,7 +207,10 @@ const RegisterScreen = (props) => {
                         'Registration Successful. Please Login to proceed'
                     );
                 } else {
-                    setErrortext(responseJson.msg);
+                    // setErrortext(responseJson.msg);
+                    // alert(responseJson.toast)
+                    ToastAndroid.show(responseJson.toast, ToastAndroid.SHORT);
+
                 }
             })
             .catch((error) => {
@@ -222,7 +229,7 @@ const RegisterScreen = (props) => {
                     justifyContent: 'center',
                 }}>
                 <Text style={styles.successTextStyle}>
-                    Registration Successful
+                    account created successful
         </Text>
                 <TouchableOpacity
                     style={styles.buttonStyle}
@@ -381,12 +388,15 @@ const RegisterScreen = (props) => {
                             {errortext}
                         </Text>
                     ) : null} */}
-                  <TouchableOpacity
-                        style={styles.buttonStyle}
-                        activeOpacity={0.5}
-                        onPress={handleSubmitButton}>
-                        <Text style={styles.buttonTextStyle}>REGISTER</Text>
-                    </TouchableOpacity>
+                    <View style={styles.regbtnbotom}>
+                        <TouchableOpacity
+                            style={styles.buttonStyle}
+                            activeOpacity={0.5}
+                            onPress={handleSubmitButton}>
+                            <Text style={styles.buttonTextStyle}>REGISTER</Text>
+                        </TouchableOpacity>
+                    </View>
+
                 </KeyboardAvoidingView>
                 {/* <Text>Your expo push token: {expoPushToken}</Text>
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -400,7 +410,7 @@ const RegisterScreen = (props) => {
                         await schedulePushNotification();
                     }}
                 /> */}
-                  
+
             </ScrollView>
         </View >
     );
@@ -418,6 +428,9 @@ const styles = StyleSheet.create({
         marginRight: 'auto',
         // margin: 10,
         width: '75%',
+    },
+    regbtnbotom: {
+        paddingBottom: 15
     },
     hiddenInput: {
         width: 0,

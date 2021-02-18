@@ -8,6 +8,8 @@ import {
     Image,
     Keyboard,
     TouchableOpacity,
+    Platform,
+    ToastAndroid,
     KeyboardAvoidingView,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -58,12 +60,18 @@ const LoginScreen = ({ navigation }) => {
                 if (responseJson.message === 'success') {
                     AsyncStorage.setItem('user_id', responseJson.userid);
                     AsyncStorage.setItem('userdatas', JSON.stringify(responseJson))
+                    if(Platform.OS === 'android') {
+                        ToastAndroid.show(responseJson.toast, ToastAndroid.SHORT);
+                    }
                     // console.log(responseJson.data.email);
                     navigation.replace('DrawerNavigationRoutes');
                     // navigation.replace('DrawerNavigationRoutes', { datas: 'hello gokul' } )
                 } else {
-                    setErrortext(responseJson.message);
-                    console.log(responseJson.message);
+                    // setErrortext(responseJson.message);
+                    // console.log(responseJson.message);
+                    if(Platform.OS === 'android') {
+                        ToastAndroid.show(responseJson.toast, ToastAndroid.SHORT);
+                    }
                 }
             })
             .catch((error) => {
@@ -128,7 +136,6 @@ const LoginScreen = ({ navigation }) => {
                                 onSubmitEditing={Keyboard.dismiss}
                                 blurOnSubmit={false}
                                 secureTextEntry={true}
-                                underlineColorAndroid="#f000"
                                 returnKeyType="next"
                             />
                         </View>
@@ -208,18 +215,18 @@ const styles = StyleSheet.create({
     },
     inputStyle: {
         flex: 1,
-        color: '#00334e',
-        paddingLeft: 15,
-        paddingRight: 15,
+        color: '#204056',
+        // paddingLeft: 15,
+        // paddingRight: 15,
         borderWidth: 1,
         borderTopWidth: 0,
         borderLeftWidth: 0,
         borderRightWidth: 0,
         // borderRadius: 30,
         borderColor: '#dadae8',
-        marginTop: 20,
-        paddingTop: 20,
-        paddingBottom: 20,
+        // marginTop: 20,
+        // paddingTop: 20,
+        // paddingBottom: 20,
         // outline: 'none'
     },
     registerTextStyle: {
