@@ -28,6 +28,12 @@ export default class HomeScreen extends Component {
     showLoader = () => {
         this.setState({ isLoading: true });
     };
+    profiledetails = (e, stories) => {
+        this.props.navigation.navigate(
+            'Profiles'
+        );
+        AsyncStorage.setItem('userprofiles', stories.creator)
+    }
     getdata = async () => {
         try {
             let users = await AsyncStorage.getItem('userdatas');
@@ -37,7 +43,8 @@ export default class HomeScreen extends Component {
             const gettoken = this.state.data.token;
             const getuserid = this.state.data.userid;
             console.log(gettoken);
-            const localurl = 'http://192.168.1.16:8000/api/getuserdetails/';
+            // const localurl = 'http://192.168.1.16:8000/api/getuserdetails/';
+            const localurl = 'https://tranquil-dusk-36378.herokuapp.com/api/getuserdetails/'
             // const localurl = 'http://localhost:8000/api/getuserdetails/';
             const config = {
                 headers: {
@@ -56,7 +63,8 @@ export default class HomeScreen extends Component {
                     console.log(error);
                 })
             // get stories by id
-            const localurl1 = 'http://192.168.1.16:8000/api/allstories';
+            // const localurl1 = 'http://192.168.1.16:8000/api/allstories';
+            const localurl1 = 'https://tranquil-dusk-36378.herokuapp.com/api/allstories'
             // const localurl1 = 'http://localhost:8000/api/allstories';
             Axios.get(localurl1, config)
                 .then(response => {
@@ -66,7 +74,7 @@ export default class HomeScreen extends Component {
                     getdatas.forEach(datas => {
                         const obj = {
                             'username': datas.username, 'useremail': datas.useremail,
-                            'title': datas.title, 'storycontent': datas.storypara
+                            'title': datas.title, 'storycontent': datas.storypara, 'creator': datas.creatorid
                         };
                         this.setState({
                             userstory: [...this.state.userstory, obj]
@@ -82,7 +90,7 @@ export default class HomeScreen extends Component {
             // error reading value
             console.log(e);
         }
-    }    
+    }
     // updateState = () => this.setState({myState: 'The state is updated'})  
 
 
@@ -91,15 +99,6 @@ export default class HomeScreen extends Component {
         return (
             <SafeAreaView style={{ flex: 1 }}>
                 <ScrollView>
-                    {/* <View>Text app</View> */}
-                    {/* <Text>Hello {this.state.profiles.username}</Text> */}
-                    {/* <View>
-                        <ActivityIndicator
-                            animating={animating}
-                            color='#bc2b78'
-                            size="large"
-                            style={styles.activityIndicator} />
-                    </View> */}
                     <View style={styles.mainBody}>
                         {this.state.userstory.map((stories, index) => (
                             <Card key={index}>
@@ -112,7 +111,7 @@ export default class HomeScreen extends Component {
                                     <Card.Divider />
                                 </View>
                                 <View>
-                                    <Text>posted by {stories.username}</Text>
+                                    <Text>posted by <Text style={styles.underline} onPress={((e) => this.profiledetails(e, stories))}>{stories.username}</Text></Text>
                                 </View>
                             </Card>
                         ))}
@@ -127,6 +126,7 @@ export default class HomeScreen extends Component {
 const styles = StyleSheet.create({
     storycontentbottomview: {
         paddingBottom: 50,
+        textAlign: 'justify'
     },
     mainBody: {
         paddingBottom: 50
@@ -136,5 +136,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 80
-    }
+    },
+    underline: { textDecorationLine: 'underline' }
+
 });

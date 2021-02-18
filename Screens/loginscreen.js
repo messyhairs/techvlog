@@ -33,7 +33,8 @@ const LoginScreen = ({ navigation }) => {
         }
         // setLoading(true);
         // const url = 'http://172.26.240.1:8000/api/login';
-        const localurl = 'http://192.168.1.16:8000/api/login';
+        // const localurl = 'http://192.168.1.16:8000/api/login';
+        const localurl = 'https://tranquil-dusk-36378.herokuapp.com/api/login'
         // const localurl = 'http://localhost:8000/api/login';
 
         // fetch('http://localhost:3000/api/user/login', {

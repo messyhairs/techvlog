@@ -31,7 +31,8 @@ export default class EditScreen extends React.Component {
             const gettoken = this.state.data.token;
             // const getuserid = this.state.data.userid;
             const stories_id = story.stories_id;
-            const localurl = 'http://192.168.1.16:8000/api/edit/';
+            // const localurl = 'http://192.168.1.16:8000/api/edit/';
+            const localurl = 'https://tranquil-dusk-36378.herokuapp.com/api/edit/'
             // const localurl = 'http://localhost:8000/api/edit/';
             const config = {
                 headers: {
@@ -71,7 +72,8 @@ export default class EditScreen extends React.Component {
             const username = story.username;
             const useremail = story.useremail
             // const url = 'http://localhost:8000/api/update/'
-            const url = 'http://192.168.1.16:8000/api/update/'
+            // const url = 'http://192.168.1.16:8000/api/update/'
+            const url = 'https://tranquil-dusk-36378.herokuapp.com/api/update/'
             fetch(url + stories_id, {
                 method: 'POST',
                 headers: {
@@ -126,7 +128,8 @@ export default class EditScreen extends React.Component {
             const username = story.username;
             const useremail = story.useremail
             // const url = 'http://localhost:8000/api/delete/'
-            const url = 'http://192.168.1.16:8000/api/delete/'
+            // const url = 'http://192.168.1.16:8000/api/delete/'
+            const url = 'https://tranquil-dusk-36378.herokuapp.com/api/delete/'
             fetch(url + stories_id, {
                 method: 'POST',
                 headers: {

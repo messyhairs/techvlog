@@ -7,34 +7,34 @@ import Storycreatescreen from './storycreate';
 import CustomSidebarMenu from './sidebarmenu';
 import NavigationDrawerHeader from './drawerheader';
 import Viewstory from './viewyourstory';
-import EditScreen from './editscreen';
+// import EditScreen from './editscreen';
 import { StyleSheet } from 'react-native';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
-const EditstoryScreenStack = ({ navigation }) => {
-    return (
-        <Stack.Navigator initialRouteName="EditScreen">
-            <Stack.Screen
-                name="EditScreen"
-                component={EditScreen}
-                options={{
-                    title: 'EditScreen', //Set Header Title
-                    headerLeft: () => (
-                        <NavigationDrawerHeader navigationProps={navigation} />
-                    ),
-                    headerStyle: {
-                        backgroundColor: '#307ecc', //Set Header color
-                    },
-                    headerTintColor: '#fff', //Set Header text color
-                    headerTitleStyle: {
-                        fontWeight: 'bold', //Set Header text style
-                    },
-                }}
-            />
-        </Stack.Navigator>
-    );
-};
+// const EditstoryScreenStack = ({ navigation }) => {
+//     return (
+//         <Stack.Navigator initialRouteName="EditScreen">
+//             <Stack.Screen
+//                 name="EditScreen"
+//                 component={EditScreen}
+//                 options={{
+//                     title: 'EditScreen', //Set Header Title
+//                     headerLeft: () => (
+//                         <NavigationDrawerHeader navigationProps={navigation} />
+//                     ),
+//                     headerStyle: {
+//                         backgroundColor: '#307ecc', //Set Header color
+//                     },
+//                     headerTintColor: '#fff', //Set Header text color
+//                     headerTitleStyle: {
+//                         fontWeight: 'bold', //Set Header text style
+//                     },
+//                 }}
+//             />
+//         </Stack.Navigator>
+//     );
+// };
 const homeScreenStack = ({ navigation }) => {
     return (
         <Stack.Navigator initialRouteName="HomeScreen">
@@ -95,7 +95,7 @@ const storycreateScreenStack = ({ navigation }) => {
                     <NavigationDrawerHeader navigationProps={navigation} />
                 ),
                 headerStyle: {
-                    backgroundColor: '#ff4f81', //Set Header color
+                    backgroundColor: '#050f2c', //Set Header color
                 },
                 headerTintColor: '#fff', //Set Header text color
                 headerTitleStyle: {
@@ -123,7 +123,7 @@ const viewstoryScreenStack = ({ navigation }) => {
                     <NavigationDrawerHeader navigationProps={navigation} />
                 ),
                 headerStyle: {
-                    backgroundColor: '#ff4f81', //Set Header color
+                    backgroundColor: '#050f2c', //Set Header color
                 },
                 headerTintColor: '#fff', //Set Header text color
                 headerTitleStyle: {
@@ -175,11 +175,11 @@ const DrawerNavigatorRoutes = (props) => {
                 options={{ drawerLabel: 'Viewstory' }}
                 component={viewstoryScreenStack}
             />
-            <Drawer.Screen
+            {/* <Drawer.Screen
                 name="EditstoryScreenStack"
                 options={{ drawerLabel: 'Edit Screen' }}
                 component={EditstoryScreenStack}
-            />
+            /> */}
         </Drawer.Navigator>
     );
 };

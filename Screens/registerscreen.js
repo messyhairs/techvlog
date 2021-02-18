@@ -29,6 +29,11 @@ const RegisterScreen = (props) => {
     const [userage, setuserage] = useState('');
     const [useraddress, setuseraddress] = useState('');
     const [password, setpassword] = useState('');
+    const [role, setrole] = useState('');
+    const [contactnumber, setcontactnumber] = useState('');
+    const [tagline, settagline] = useState('');
+    const [noofex, setnoofex] = useState('');
+
     // const expotoken = useState('');
     // const [pushnotificationtoken, setpushnotificationtoken] = useState('');
     // const [loading, setLoading] = useState(false);
@@ -135,10 +140,27 @@ const RegisterScreen = (props) => {
             alert('Please fill Password');
             return;
         }
+        if (!role) {
+            alert('Please fill role');
+            return;
+        }
+        if (!tagline) {
+            alert('Please fill tagline');
+            return;
+        }
+        if (!noofex) {
+            alert('Please fill noofex');
+            return;
+        }
+        if (!contactnumber) {
+            alert('Please fill contactnumber');
+            return;
+        }
         //Show Loader
         // setLoading(true);
         // const url = 'http://172.26.240.1:8000/api/createaccount';
-        const localurl = 'http://192.168.1.16:8000/api/createaccount';
+        // const localurl = 'http://192.168.1.16:8000/api/createaccount';
+        const localurl = 'https://tranquil-dusk-36378.herokuapp.com/api/createaccount'
         // const localurl = 'http://localhost:8000/api/createaccount';
 
         fetch(localurl, {
@@ -153,6 +175,10 @@ const RegisterScreen = (props) => {
                 password: password,
                 userage: userage,
                 useraddress: useraddress,
+                role: role,
+                noofex: noofex,
+                contactnumber: contactnumber,
+                tagline: tagline,
                 expoPushToken: expoPushToken
             })
         })
@@ -216,7 +242,7 @@ const RegisterScreen = (props) => {
                     justifyContent: 'center',
                     alignContent: 'center',
                 }}>
-                <View style={{ alignItems: 'center' }}>
+                {/* <View style={{ alignItems: 'center' }}>
                     <Image
                         // source={require('../Image/aboutreact.png')}
                         style={{
@@ -226,7 +252,7 @@ const RegisterScreen = (props) => {
                             margin: 30,
                         }}
                     />
-                </View>
+                </View> */}
                 <KeyboardAvoidingView enabled>
                     <View style={styles.SectionStyle}>
                         <TextInput
@@ -237,10 +263,6 @@ const RegisterScreen = (props) => {
                             placeholderTextColor="#8b9cb5"
                             autoCapitalize="sentences"
                             returnKeyType="next"
-                        // onSubmitEditing={() =>
-                        //     emailInputRef.current && emailInputRef.current.focus()
-                        // }
-                        // blurOnSubmit={false}
                         />
                     </View>
                     <View style={styles.SectionStyle}>
@@ -253,11 +275,6 @@ const RegisterScreen = (props) => {
                             keyboardType="email-address"
                             ref={emailInputRef}
                             returnKeyType="next"
-                        // onSubmitEditing={() =>
-                        //     passwordInputRef.current &&
-                        //     passwordInputRef.current.focus()
-                        // }
-                        // blurOnSubmit={false}
                         />
                     </View>
                     <View style={styles.SectionStyle}>
@@ -272,11 +289,6 @@ const RegisterScreen = (props) => {
                             ref={passwordInputRef}
                             returnKeyType="next"
                             secureTextEntry={true}
-                        // onSubmitEditing={() =>
-                        //     ageInputRef.current &&
-                        //     ageInputRef.current.focus()
-                        // }
-                        // blurOnSubmit={false}
                         />
                     </View>
                     <View style={styles.SectionStyle}>
@@ -289,11 +301,6 @@ const RegisterScreen = (props) => {
                             keyboardType="numeric"
                             ref={ageInputRef}
                             returnKeyType="next"
-                        // onSubmitEditing={() =>
-                        //     addressInputRef.current &&
-                        //     addressInputRef.current.focus()
-                        // }
-                        // blurOnSubmit={false}
                         />
                     </View>
                     <View style={styles.SectionStyle}>
@@ -303,12 +310,69 @@ const RegisterScreen = (props) => {
                                 setuseraddress(useraddress)
                             }
                             underlineColorAndroid="#f000"
-                            placeholder="Enter Address"
+                            placeholder="your city"
                             placeholderTextColor="#8b9cb5"
                             autoCapitalize="sentences"
                             ref={addressInputRef}
                             returnKeyType="next"
-                            // onSubmitEditing={Keyboard.dismiss}
+                            blurOnSubmit={false}
+                        />
+                    </View>
+                    <View style={styles.SectionStyle}>
+                        <TextInput
+                            style={styles.inputStyle}
+                            onChangeText={(tagline) =>
+                                settagline(tagline)
+                            }
+                            underlineColorAndroid="#f000"
+                            placeholder="Tagline"
+                            placeholderTextColor="#8b9cb5"
+                            autoCapitalize="sentences"
+                            returnKeyType="next"
+                            blurOnSubmit={false}
+                        />
+                    </View>
+                    <View style={styles.SectionStyle}>
+                        <TextInput
+                            style={styles.inputStyle}
+                            onChangeText={(noofex) =>
+                                setnoofex(noofex)
+                            }
+                            underlineColorAndroid="#f000"
+                            placeholder="year of experience"
+                            placeholderTextColor="#8b9cb5"
+                            autoCapitalize="sentences"
+                            keyboardType="numeric"
+                            returnKeyType="next"
+                            blurOnSubmit={false}
+                        />
+                    </View>
+                    <View style={styles.SectionStyle}>
+                        <TextInput
+                            style={styles.inputStyle}
+                            onChangeText={(role) =>
+                                setrole(role)
+                            }
+                            underlineColorAndroid="#f000"
+                            placeholder="eg: Front end developer"
+                            placeholderTextColor="#8b9cb5"
+                            autoCapitalize="sentences"
+                            returnKeyType="next"
+                            blurOnSubmit={false}
+                        />
+                    </View>
+                    <View style={styles.SectionStyle}>
+                        <TextInput
+                            style={styles.inputStyle}
+                            onChangeText={(contactnumber) =>
+                                setcontactnumber(contactnumber)
+                            }
+                            underlineColorAndroid="#f000"
+                            placeholder="Mobile or phone number"
+                            placeholderTextColor="#8b9cb5"
+                            autoCapitalize="sentences"
+                            returnKeyType="next"
+                            keyboardType="numeric"
                             blurOnSubmit={false}
                         />
                     </View>

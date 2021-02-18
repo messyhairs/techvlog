@@ -9,6 +9,7 @@ import {
     KeyboardAvoidingView,
     Keyboard,
     TouchableOpacity,
+    Button,
     ScrollView,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -70,7 +71,8 @@ const Storycreatescreen = (props) => {
             const gettoken = userdatas.token;
             const getuserid = userdatas.userid;
             console.log(gettoken);
-            const geturl = 'http://192.168.1.16:8000/api/getuserdetails/';
+            // const geturl = 'http://192.168.1.16:8000/api/getuserdetails/';
+            const geturl = 'https://tranquil-dusk-36378.herokuapp.com/api/getuserdetails/'
             // const geturl = 'http://localhost:8000/api/getuserdetails/';
 
             const config = {
@@ -85,7 +87,8 @@ const Storycreatescreen = (props) => {
                 .then(response => {
                     // this.setState({ profiles: response.data.profile });
                     console.log(response.data.profile.useremail)
-                    const url = 'http://192.168.1.16:8000/api/createstory';
+                    // const url = 'http://192.168.1.16:8000/api/createstory';
+                    const url = 'https://tranquil-dusk-36378.herokuapp.com/api/createstory'
                     // const url = 'http://localhost:8000/api/createstory';
                     fetch(url, {
                         method: 'POST',
@@ -282,6 +285,7 @@ const Storycreatescreen = (props) => {
                     onChangeText={(storypara) =>
                         setstorypara(storypara)
                     }
+                    returnKeyType="next"
                     // maxLength={120}
                     placeholder='Content of TechVlog'
                     placeholderTextColor={'#c7c7c7'}
@@ -293,6 +297,7 @@ const Storycreatescreen = (props) => {
                     onPress={createstory}>
                     <Text style={styles.buttonTextStyle}>createstory</Text>
                 </TouchableOpacity>
+                {/* <Button style={styles.buttonStyle} title="CreateStory" onPress={createstory} /> */}
             </ScrollView>
         </View>
     );
@@ -313,9 +318,8 @@ const styles = StyleSheet.create({
         bottom: 0
     },
     buttonStyle: {
-        backgroundColor: '#ff4f81',
+        backgroundColor: '#123962',
         borderWidth: 0,
-        color: '#FFFFFF',
         borderColor: '#7DE24E',
         height: 40,
         alignItems: 'center',
@@ -339,7 +343,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     buttonTextStyle: {
-        color: '#FFFFFF',
+        color: '#ffffff',
         paddingVertical: 10,
         fontSize: 16,
     },
@@ -349,7 +353,10 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         paddingRight: 15,
         borderWidth: 1,
-        borderRadius: 30,
+        borderTopWidth: 0,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        // borderRadius: 30,
         borderColor: '#dadae8',
         marginTop: 20,
         paddingTop: 20,

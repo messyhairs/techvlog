@@ -28,8 +28,9 @@ export default class Viewstory extends Component {
             const getuserid = this.state.data.userid;
             console.log(gettoken);
             // const geturl = 'http://172.26.240.1:8000/api/getuserdetails/';
-            const localurl = 'http://192.168.1.16:8000/api/getuserdetails/';
+            // const localurl = 'http://192.168.1.16:8000/api/getuserdetails/';
             // const localurl = 'http://localhost:8000/api/getuserdetails/';
+            const localurl = 'https://tranquil-dusk-36378.herokuapp.com/api/getuserdetails'
             const config = {
                 headers: {
                     'content-type': 'multipart/form-data',
@@ -48,7 +49,8 @@ export default class Viewstory extends Component {
                 })
             // get stories by id
             // const geturl1 = 'http://172.26.240.1:8000/api/yourstories/';
-            const localurl1 = 'http://192.168.1.16:8000/api/allstories';
+            // const localurl1 = 'http://192.168.1.16:8000/api/allstories';
+            const localurl1 = 'https://tranquil-dusk-36378.herokuapp.com/api/allstories'
             // const localurl1 = 'http://localhost:8000/api/allstories';
             Axios.get(localurl1, config)
                 .then(response => {
@@ -94,7 +96,8 @@ export default class Viewstory extends Component {
         //     name: 'gokulnathu'
         // }
         this.props.navigation.navigate(
-            'EditstoryScreenStack',
+            // 'EditstoryScreenStack',
+            'Edit your story'
             // { story: stories },
         );
         // console.log(e.target.value);
@@ -155,6 +158,7 @@ export default class Viewstory extends Component {
 const styles = StyleSheet.create({
     storycontentbottomview: {
         paddingBottom: 50,
+        textAlign: 'justify'
     },
     mainBody: {
         paddingBottom: 50

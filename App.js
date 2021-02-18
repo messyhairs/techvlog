@@ -5,6 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from './Screens/splashscreen';
 import LoginScreen from './Screens/loginscreen';
 import RegisterScreen from './Screens/registerscreen';
+import EditScreen from './Screens/editscreen';
+import Userprofiles from './Screens/userprofiles';
 import DrawerNavigationRoutes from './Screens/drawernavigation';
 import { StatusBar } from 'react-native';
 
@@ -20,6 +22,7 @@ const Auth = () => {
         component={LoginScreen}
         options={{ headerShown: false }}
       />
+
       <Stack.Screen
         name="RegisterScreen"
         component={RegisterScreen}
@@ -42,33 +45,43 @@ const App = () => {
   const [hidden, setHidden] = useState(false);
 
   return (
-    
-      <NavigationContainer>
-         <StatusBar
+
+    <NavigationContainer>
+      <StatusBar
         hidden={hidden} />
-        <Stack.Navigator initialRouteName="SplashScreen">
-          {/* SplashScreen which will come once for 5 Seconds */}
-          <Stack.Screen
-            name="SplashScreen"
-            component={SplashScreen}
-            // Hiding header for Splash Screen
-            options={{ headerShown: false }}
-          />
-          {/* Auth Navigator: Include Login and Signup */}
-          <Stack.Screen
-            name="Auth"
-            component={Auth}
-            options={{ headerShown: false }}
-          />
-          {/* Navigation Drawer as a landing page */}
-          <Stack.Screen
-            name="DrawerNavigationRoutes"
-            component={DrawerNavigationRoutes}
-            // Hiding header for Navigation Drawer
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Stack.Navigator initialRouteName="SplashScreen">
+        {/* SplashScreen which will come once for 5 Seconds */}
+        <Stack.Screen
+          name="SplashScreen"
+          component={SplashScreen}
+          // Hiding header for Splash Screen
+          options={{ headerShown: false }}
+        />
+        {/* Auth Navigator: Include Login and Signup */}
+        <Stack.Screen
+          name="Auth"
+          component={Auth}
+          options={{ headerShown: false }}
+        />
+        {/* Navigation Drawer as a landing page */}
+        <Stack.Screen
+          name="DrawerNavigationRoutes"
+          component={DrawerNavigationRoutes}
+          // Hiding header for Navigation Drawer
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Edit your story"
+          component={EditScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Profiles"
+          component={Userprofiles}
+          options={{ headerShown: true }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
