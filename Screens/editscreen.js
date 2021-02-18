@@ -93,7 +93,7 @@ export default class EditScreen extends React.Component {
                     console.log(responseJson)
                     // alert(responseJson.messgae)
                     if (responseJson.messgae === 'update') {
-                        AsyncStorage.removeItem('currentstory');
+                        // AsyncStorage.removeItem('currentstory');
                         if (Platform.OS === 'android') {
                             ToastAndroid.show("your story updated succesfully!", ToastAndroid.SHORT);
                         }
@@ -101,6 +101,7 @@ export default class EditScreen extends React.Component {
                             AlertIOS.alert('your story updated succesfully');
                             // ToastAndroid.show("your story updated succesfully!", ToastAndroid.SHORT);
                         }
+                        AsyncStorage.removeItem('currentstory');
                         setTimeout(() => {
                             // window.location.reload('homeScreenStack')
                             // <SplashScreen />
@@ -155,6 +156,7 @@ export default class EditScreen extends React.Component {
                         AlertIOS.alert(responseJson.messgae);
                         // ToastAndroid.show("your story updated succesfully!", ToastAndroid.SHORT);
                     }
+                    AsyncStorage.removeItem('currentstory');
                     setTimeout(() => {
                         // window.location.reload('homeScreenStack')
                         // <SplashScreen />
