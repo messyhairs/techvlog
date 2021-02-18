@@ -4,9 +4,9 @@
     "slug": "Techblog",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/techicon2.png",
+    "icon": "./assets/ticon.png",
     "splash": {
-      "image": "./assets/techicon2.png",
+      "image": "./assets/ticon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/techicon2.png",
+        "foregroundImage": "./assets/ticon.png",
         "backgroundColor": "#FFFFFF"
       },
       "useNextNotificationsApi": true,
@@ -29,13 +29,13 @@
       "package": "com.nathu.TechVlog"
     },
     "notification": {
-      "icon": "./assets/techicon2.png",
+      "icon": "./assets/ticon.png",
       "color": "#311b92",
       "androidMode": "default",
       "androidCollapsedTitle": "Techblog"
     },
     "web": {
-      "favicon": "./assets/techicon2.png"
+      "favicon": "./assets/ticon.png"
     }
   }
 }
