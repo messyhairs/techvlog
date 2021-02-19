@@ -25,9 +25,9 @@ export default class HomeScreen extends Component {
         // this.closeActivityIndicator()
         this.getdata();
     }
-    showLoader = () => {
-        this.setState({ isLoading: true });
-    };
+    // showLoader = () => {
+    //     this.setState({ isLoading: true });
+    // };
     profiledetails = (e, stories) => {
         this.props.navigation.navigate(
             'Profiles'
@@ -54,6 +54,7 @@ export default class HomeScreen extends Component {
                 },
 
             };
+            this.setState({isLoading : true})
             Axios.get(localurl + getuserid, config)
                 .then(response => {
                     this.setState({ profiles: response.data.profile });
@@ -79,6 +80,7 @@ export default class HomeScreen extends Component {
                         this.setState({
                             userstory: [...this.state.userstory, obj]
                         });
+                        this.setState({isLoading : false})
                         console.log(this.state.userstory);
                         // this.setState({ userstory: datas });
                     })
